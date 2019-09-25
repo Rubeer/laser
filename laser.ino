@@ -8,14 +8,14 @@ static task_scheduler<16> Tasks;
 
 #define LDR_POWER_PIN 7
 #define LDR_PIN A0
-#define SERVO_PIN 9
+#define SERVO_PIN 5
 #define BUZZER_PIN 4
 
 #define LASER_PERIOD 600 
 #define BEEP_DURATION 10
-#define SERVO_MOVEMENT_DURATION 200
-#define SERVO_ANGLE_RETRACTED 0
-#define SERVO_ANGLE_EXTENDED 90
+#define SERVO_MOVEMENT_DURATION 300
+#define SERVO_ANGLE_RETRACTED 3
+#define SERVO_ANGLE_EXTENDED 27
 
 static rgb_lcd lcd; // I2C
 static Servo servo;
@@ -51,7 +51,7 @@ void loop()
     u16 ldr = analogRead(LDR_PIN);
 
     bool laser_low  = ldr > 550;
-    bool laser_high = ldr < 150;
+    bool laser_high = ldr < 450;
 
     if(laser_low)
     {

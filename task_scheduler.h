@@ -47,10 +47,7 @@ struct task_scheduler
             if(ExecuteIfElapsed(Tasks + i))
             {
                 // NOTE(robin): unordered removal (replace with last item)
-                if(i != --TaskCount)
-                {
-                    Tasks[i--] = Tasks[TaskCount];
-                }
+                Tasks[i--] = Tasks[--TaskCount];
             }
         }
     }
@@ -71,10 +68,8 @@ struct task_scheduler
             {
                 return;
             }
-            else
-            {
-                Update();
-            }
+
+            Update();
         }
     }
 };
